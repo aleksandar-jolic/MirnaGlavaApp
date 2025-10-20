@@ -1,0 +1,58 @@
+<ContentPage
+    x:Class="MirnaGlavaApp.Views.TaskListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#121212">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- 🔹 Naslov liste -->
+        <Label
+            x:Name="ListTitle"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="White"
+            Text="Naziv liste" />
+
+        <!-- 🔹 Lista zadataka -->
+        <CollectionView
+            x:Name="TasksView"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        BackgroundColor="#1E1E1E"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="15"
+                        Margin="0,5">
+
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding IsCompleted}" Color="#FF9500" />
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="18"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- 🔹 Dugme za dodavanje novog zadatka -->
+        <Button
+            Text="+"
+            FontSize="28"
+            CornerRadius="40"
+            WidthRequest="60"
+            HeightRequest="60"
+            BackgroundColor="#FF9500"
+            TextColor="White"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Clicked="OnAddTaskClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

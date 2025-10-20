@@ -1,0 +1,89 @@
+<ContentPage
+    x:Class="MirnaGlavaApp.Views.MainFlyoutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MirnaGlavaApp.ViewModels"
+    BackgroundColor="#121212"
+    Title="Pregled">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- 🔹 PREGLED sekcija -->
+        <VerticalStackLayout Padding="20,10,20,0" Spacing="8">
+            <Label Text="Pregled" FontSize="22" TextColor="White" FontAttributes="Bold" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button
+                    Text="📅 Danas"
+                    Command="{Binding OpenTodayCommand}"
+                    BackgroundColor="#C7A8F5"
+                    TextColor="Black"
+                    CornerRadius="10"
+                    Padding="10,5" />
+
+                <Button
+                    Text="🗓️ Ova nedelja"
+                    Command="{Binding OpenWeekCommand}"
+                    BackgroundColor="#C7A8F5"
+                    TextColor="Black"
+                    CornerRadius="10"
+                    Padding="10,5" />
+
+                <Button
+                    Text="📆 Ovaj mesec"
+                    Command="{Binding OpenMonthCommand}"
+                    BackgroundColor="#C7A8F5"
+                    TextColor="Black"
+                    CornerRadius="10"
+                    Padding="10,5" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <!-- 🔹 LISTE sekcija -->
+        <VerticalStackLayout Grid.Row="1" Padding="20,10" Spacing="10">
+            <Label Text="Liste" FontSize="22" TextColor="White" FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding TaskLists}" SelectionMode="Single"
+                            SelectionChanged="OnListSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            BackgroundColor="#1E1E1E"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15"
+                            Margin="0,5">
+
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Name}" FontSize="18" TextColor="White" />
+                                <Label
+                                    Text="{Binding TaskCount, StringFormat='({0})'}"
+                                    FontSize="16"
+                                    TextColor="#999"
+                                    HorizontalOptions="EndAndExpand" />
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <!-- 🔹 Floating + dugme -->
+        <Button
+            Grid.Row="2"
+            Text="+"
+            FontSize="28"
+            CornerRadius="40"
+            WidthRequest="60"
+            HeightRequest="60"
+            BackgroundColor="#FF9500"
+            TextColor="White"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Margin="25"
+            Command="{Binding AddListCommand}" />
+    </Grid>
+</ContentPage>

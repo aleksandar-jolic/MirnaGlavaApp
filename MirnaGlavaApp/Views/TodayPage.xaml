@@ -1,0 +1,68 @@
+<ContentPage
+    x:Class="MirnaGlavaApp.Views.TodayPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:MirnaGlavaApp.ViewModels"
+    BackgroundColor="#121212"
+    Title="Danas">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="*,Auto">
+        <!-- Glavna lista zadataka -->
+        <CollectionView
+            ItemsSource="{Binding TodayTasks}"
+            Margin="20"
+            SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="#2A2A2A"
+                        BackgroundColor="#1E1E1E"
+                        StrokeShape="RoundRectangle 12"
+                        Margin="0,5"
+                        Padding="15">
+
+                        <HorizontalStackLayout Spacing="15">
+                            <CheckBox
+                                IsChecked="{Binding IsCompleted, Mode=TwoWay}"
+                                CheckedChanged="OnTaskCheckedChanged"
+                                Color="#FF9500" />
+
+                            <VerticalStackLayout>
+                                <Label
+                                    Text="{Binding Title}"
+                                    TextColor="{Binding IsCompleted, Converter={StaticResource BoolToColorConverter}}"
+                                    FontSize="18"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="{Binding DueDate, StringFormat='{0:dd.MM.yyyy}'}"
+                                    TextColor="#777"
+                                    FontSize="14" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Floating dugme + -->
+        <Button
+            Grid.Row="1"
+            Text="+"
+            FontSize="28"
+            CornerRadius="40"
+            WidthRequest="60"
+            HeightRequest="60"
+            BackgroundColor="#FF9500"
+            TextColor="White"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Margin="25"
+            Command="{Binding AddTaskCommand}" />
+    </Grid>
+</ContentPage>
