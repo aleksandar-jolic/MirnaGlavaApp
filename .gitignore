@@ -1,0 +1,103 @@
+## ===========================================
+## .NET MAUI / Visual Studio .gitignore
+## Autor: ChatGPT (Aco edition)
+## ===========================================
+
+# Build output
+bin/
+obj/
+AppPackages/
+[Bb]uild[Ll]og.*
+*.tlog
+*.cache
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vspscc
+*.vssscc
+.vscode/
+.vs/
+.idea/
+
+# OS generated files
+ehthumbs.db
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Logs
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+*.log.json
+
+# SQLite databases
+*.db3
+*.sqlite
+*.sqlite3
+*.db
+
+# Backups
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# MAUI / Android specific
+platforms/android/bin/
+platforms/android/obj/
+platforms/android/.gradle/
+platforms/android/.idea/
+platforms/android/local.properties
+platforms/android/app/build/
+platforms/android/.externalNativeBuild/
+
+# MAUI / iOS specific
+platforms/ios/bin/
+platforms/ios/obj/
+platforms/ios/build/
+platforms/ios/Pods/
+platforms/ios/.idea/
+platforms/ios/.vscode/
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+artifacts/
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Secrets / environment
+.env
+.env.development
+.env.production
+appsettings.Development.json
+appsettings.Production.json
+
+# Publish
+publish/
+*.publish.xml
+
+# Others
+*.exe
+*.dll
+*.pdb
+*.mdb
+*.zip
+*.7z
+*.tar.gz
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Crash / Diagnostic files
+*.dmp
+*.err
+*.stackdump
